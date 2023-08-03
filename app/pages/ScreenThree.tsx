@@ -94,7 +94,6 @@ const ScreenOne = ({ setCurrentScreen, username, session }) => {
           leftIcon={{ type: 'font-awesome', name: 'pencil', color: 'white' }}
           onChangeText={(text) => setDescription(text)}
           value={description}
-          secureTextEntry={true}
           placeholder="Opis"
           placeholderTextColor={'white'}
           autoCapitalize={'none'}
