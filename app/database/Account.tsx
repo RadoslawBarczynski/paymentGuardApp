@@ -1,11 +1,14 @@
 import { useState, useEffect } from 'react'
 import { supabase } from '../database/supabase'
-import { StyleSheet, View, Alert } from 'react-native'
+import { StyleSheet, View, Alert, Text } from 'react-native'
 import { Button, Input } from 'react-native-elements'
 import { Session } from '@supabase/supabase-js'
 import React from 'react'
+import BottomBar from '../components/BottomBar'
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import LogoTextComponent from '../components/LogoTextComponent'
 
-export default function Account({ session }: { session: Session }) {
+export default function Account({ session, setCurrentScreen }: { session: Session, setCurrentScreen: any }) {
   const [loading, setLoading] = useState(true)
   const [username, setUsername] = useState('')
   const [website, setWebsite] = useState('')
@@ -80,19 +83,20 @@ export default function Account({ session }: { session: Session }) {
 
   return (
     <View style={styles.container}>
+      <LogoTextComponent />
       <View style={[styles.verticallySpaced, styles.mt20]}>
         <Input label="Email" value={session?.user?.email} disabled inputStyle={{'color':'white'}}/>
       </View>
       <View style={styles.verticallySpaced}>
-        <Input label="Username" value={username || ''} onChangeText={(text) => setUsername(text)} inputStyle={{'color':'white'}} />
+        <Input label="Nazwa użytkownika" value={username || ''} onChangeText={(text) => setUsername(text)} inputStyle={{'color':'white'}} />
       </View>
       <View style={styles.verticallySpaced}>
-        <Input label="Website" value={website || ''} onChangeText={(text) => setWebsite(text)} inputStyle={{'color':'white'}} />
+        <Input label="Strona" value={website || ''} onChangeText={(text) => setWebsite(text)} inputStyle={{'color':'white'}} />
       </View>
 
       <View style={[styles.verticallySpaced, styles.mt20]}>
         <Button
-              title="SAVE"
+              title="ZAPISZ"
               buttonStyle={{
                 backgroundColor: '#ed9818',
                 borderWidth: 2,
@@ -110,7 +114,7 @@ export default function Account({ session }: { session: Session }) {
 
       <View style={[styles.verticallySpaced, styles.mt80]}>
         <Button
-              title="Sign up"
+              title="WYLOGUJ"
               buttonStyle={{
                 borderColor: '#ed9818',
               }}
@@ -129,8 +133,9 @@ export default function Account({ session }: { session: Session }) {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 40,
-    padding: 12,
+    height: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   verticallySpaced: {
     paddingTop: 4,
@@ -142,5 +147,13 @@ const styles = StyleSheet.create({
   },
   mt80: {
     marginTop: 80,
+  },
+  logoText:{
+    color: 'white',
+    fontSize: 30,
+    textAlign: 'left',
+    position: 'absolute',
+    top: 25,
+    left: 25
   },
 })

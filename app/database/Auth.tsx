@@ -41,8 +41,8 @@ export default function Auth({ toggleShowRegister }) {
     <View style={styles.container}>
       <View style={styles.content}>
       <View style={[styles.verticallySpaced, styles.mt20]}>
-      <Text style={styles.title}>Welcome Back!</Text>
-        <Text style={styles.subTitle}>Login to continue</Text>
+      <Text style={styles.title}>Witaj ponownie!</Text>
+        <Text style={styles.subTitle}>Zaloguj się</Text>
       </View>
       <View style={[styles.verticallySpaced, styles.mt20]}>
         <Input
@@ -61,7 +61,7 @@ export default function Auth({ toggleShowRegister }) {
           onChangeText={(text) => setPassword(text)}
           value={password}
           secureTextEntry={true}
-          placeholder="Password"
+          placeholder="Hasło"
           placeholderTextColor={'white'}
           autoCapitalize={'none'}
           inputStyle={{'color':'white'}}
@@ -69,7 +69,7 @@ export default function Auth({ toggleShowRegister }) {
       </View>
       <View style={[styles.verticallySpaced, styles.mt20]}>
         <Button
-              title="LOGIN"
+              title="ZALOGUJ"
               buttonStyle={{
                 backgroundColor: '#ed9818',
                 borderWidth: 2,
@@ -86,7 +86,7 @@ export default function Auth({ toggleShowRegister }) {
       </View>
       <View style={[styles.verticallySpaced, styles.mt80]}>
       <Button
-              title="Sign up"
+              title="REJESTRACJA"
               buttonStyle={{
                 borderColor: '#ed9818',
               }}
