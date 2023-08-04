@@ -5,10 +5,10 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 function BottomBar({ onChangeScreen }) {
   const [currentScreen, setCurrentScreen] = useState('screen1');
 
-  const color1 = currentScreen === 'screen1' ? '#fff' : 'black';
-  const color2 = currentScreen === 'screen2' ? '#fff' : 'black';
-  const color3 = currentScreen === 'screen3' ? '#fff' : 'black';
-  const color4 = currentScreen === 'screen4' ? '#fff' : 'black';
+  const color1 = currentScreen === 'screen1' ? '#ed9818' : 'white';
+  const color2 = currentScreen === 'screen2' ? '#ed9818' : 'white';
+  const color3 = currentScreen === 'screen3' ? '#ed9818' : 'white';
+  const color4 = currentScreen === 'screen4' ? '#ed9818' : 'white';
 
   return (
     <View style={styles.container}>
@@ -57,9 +57,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
-    backgroundColor: '#b8740f',
+    backgroundColor: '#212121',
     borderTopWidth: 1,
-    borderTopColor: '#d48713',
+    borderTopColor: '#212121',
+    borderTopLeftRadius: 15,
+    borderTopRightRadius: 15,
     height: 60,
     width: '100%',
     position: 'absolute',

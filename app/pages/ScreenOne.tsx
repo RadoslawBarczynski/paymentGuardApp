@@ -9,6 +9,7 @@ import DoubleColorText from '../components/DoubleColorText'
 import BottomBar from '../components/BottomBar'
 import * as Animatable from 'react-native-animatable';
 import LogoTextComponent from '../components/LogoTextComponent'
+import InfoTileV2 from '../components/InfoTileV2'
 
 const ScreenOne = ({ setCurrentScreen, username }) => {
   const [recordsSum, setRecordsSum] = useState(0);
@@ -127,11 +128,9 @@ const ScreenOne = ({ setCurrentScreen, username }) => {
        {isScreenVisible ? (
         <Animatable.View animation="slideInUp" duration={500} style={styles.content}>
       <View style={styles.wrapper}>
-        <View style={styles.tileBody}>
-          <InfoTile props={{ name: 'W miesiącu', content: `${recordsOfMonth}zł`, color: '#33c1a1' }} />
-          <InfoTile props={{ name: 'Dzisiaj', content: `${recordsSum}zł`, color: '#FE724C' }} />
-        </View>
-        <BigInfoTile name="Ostatni wpis" content={price + 'zł'} contentDesc={description}  color="#2A5C99" />
+        <InfoTileV2 name="W miesiącu" content={recordsOfMonth + 'zł'} contentDesc='Granica: 1000zł'  color="#212121" />
+        <InfoTileV2 name="Dzisiaj" content={recordsSum + 'zł'} contentDesc=''  color="#212121"/>
+        <InfoTileV2 name="Ostatni wpis" content={price + 'zł'} contentDesc={description}  color="#212121"/>
       </View>
       </Animatable.View> ) : null}
     </View>
@@ -155,6 +154,14 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 25,
     left: 25
+  },
+  header:{
+    position: 'absolute',
+    top: 0,
+    width: '100%',
+    height: 250,
+    backgroundColor: '#AAAAAA',
+    borderRadius: 15,
   },
   wrapper:{
     gap:20

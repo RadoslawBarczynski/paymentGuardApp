@@ -12,6 +12,14 @@ import ScreenTwo from './ScreenTwo'
 import ScreenThree from './ScreenThree'
 import Account from '../database/Account'
 
+/*
+  background - #181818
+  navbar - #212121
+  hover - #3D3D3D
+  primary text - #FFFFFF
+  secondary text - #AAAAAA
+*/ 
+
 
 
 function Home({ session }: { session: Session }) {

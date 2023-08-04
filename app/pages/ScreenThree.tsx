@@ -84,7 +84,7 @@ const ScreenOne = ({ setCurrentScreen, username, session }) => {
           onChangeText={(text) => setPrice(text)}
           value={price}
           placeholder="Kwota"
-          placeholderTextColor={'white'}
+          placeholderTextColor={'#AAAAAA'}
           autoCapitalize={'none'}
           inputStyle={{'color':'white'}}
         />
@@ -95,7 +95,7 @@ const ScreenOne = ({ setCurrentScreen, username, session }) => {
           onChangeText={(text) => setDescription(text)}
           value={description}
           placeholder="Opis"
-          placeholderTextColor={'white'}
+          placeholderTextColor={'#AAAAAA'}
           autoCapitalize={'none'}
           inputStyle={{'color':'white'}}
         />

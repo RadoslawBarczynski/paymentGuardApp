@@ -5,10 +5,10 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 function TopHistoryBar({ onChangeHistory }) {
   const [currentHistory, setCurrentHistory] = useState('history1');
 
-  const color1 = currentHistory === 'history1' ? 'black' : '#fff';
-  const backgroundColor1 = currentHistory === 'history1' ? '#fff' : 'transparent';
-  const color2 = currentHistory === 'history2' ? 'black' : '#fff';
-  const backgroundColor2 = currentHistory === 'history2' ? '#fff' : 'transparent';
+  const color1 = currentHistory === 'history1' ? '#fff' : '#AAAAAA';
+  const backgroundColor1 = currentHistory === 'history1' ? '#3D3D3D' : 'transparent';
+  const color2 = currentHistory === 'history2' ? '#fff' : '#AAAAAA';
+  const backgroundColor2 = currentHistory === 'history2' ? '#3D3D3D' : 'transparent';
 
   return (
     <View style={styles.container}>
@@ -39,9 +39,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
-    //backgroundColor: '#b8740f',
+    backgroundColor: '#212121',
     borderWidth: 1,
-    borderColor: '#d48713',
     borderRadius: 30,
     height: 45,
     width: '60%',

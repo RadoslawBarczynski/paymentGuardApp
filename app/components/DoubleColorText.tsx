@@ -12,8 +12,8 @@ function DoubleColorText({ username }) {
 
 const styles = StyleSheet.create({
   usernameText: {
-    color: '#ed9818', // Tutaj możesz ustawić dowolny kolor dla zmiennej username
-    fontWeight: 'bold', // Możesz dodać inne style według potrzeb
+    color: '#ed9818', 
+    fontWeight: 'bold', 
   },
   body:{
     flexDirection: 'row',

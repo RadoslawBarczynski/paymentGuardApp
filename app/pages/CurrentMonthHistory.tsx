@@ -122,9 +122,9 @@ const styles = StyleSheet.create({
   costItem: {
     marginBottom: 10,
     padding: 10,
-    backgroundColor: '#2B2D42',
+    backgroundColor: '#3D3D3D',
     borderRadius: 8,
-    borderColor: '#ed9818',
+    borderColor: 'white',
     borderWidth: 1,
     width: 300,
     ...Platform.select({

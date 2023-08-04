@@ -44,7 +44,7 @@ export default function App() {
 
 const styles = StyleSheet.create({
   body:{
-    backgroundColor: '#212121',
+    backgroundColor: '#181818',
     height: '100%',
     width: '100%',
     flex: 1,

@@ -9,7 +9,7 @@ import DoubleColorText from '../components/DoubleColorText'
 import BottomBar from '../components/BottomBar'
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import LogoTextComponent from '../components/LogoTextComponent';
-import CurrentMonthHistory from './currentMonthHistory'
+import CurrentMonthHistory from './CurrentMonthHistory'
 import AllMonthHistory from './AllMonthlyHistory'
 import TopHistoryBar from '../components/TopHistoryBar'
 
@@ -102,30 +102,6 @@ const styles = StyleSheet.create({
   },
   mt20: {
     marginTop: 20,
-  },
-  container: {
-    marginTop: 80,
-  },
-  costItem: {
-    marginBottom: 10,
-    padding: 10,
-    backgroundColor: '#2B2D42',
-    borderRadius: 8,
-    borderColor: '#ed9818',
-    borderWidth: 1,
-    width: 300,
-    ...Platform.select({
-      ios: {
-        // Dla iOS, ustawiamy tło przezroczyste, aby cień wyglądał lepiej
-        backgroundColor: 'transparent',
-      },
-    }),
-  },
-  costInfo: {
-    fontSize: 16,
-    marginBottom: 5,
-    width: '100%',
-    color: 'white'
   },
 })
 
