@@ -12,6 +12,7 @@ import LogoTextComponent from '../components/LogoTextComponent';
 import CurrentMonthHistory from './CurrentMonthHistory'
 import AllMonthHistory from './AllMonthlyHistory'
 import TopHistoryBar from '../components/TopHistoryBar'
+import NonRegularHistory from './NonRegularHistory'
 
 const ScreenOne = ({ setCurrentScreen, username }) => {
   const [costs, setCosts] = useState([]);
@@ -73,6 +74,7 @@ const ScreenOne = ({ setCurrentScreen, username }) => {
       <View style={{marginTop: 100, paddingBottom: 80}}>
       {currentHistory === 'history1' && <CurrentMonthHistory  setCurrentHistory={setCurrentHistory} />}
       {currentHistory === 'history2' && <AllMonthHistory  setCurrentHistory={setCurrentHistory} />}
+      {currentHistory === 'history3' && <NonRegularHistory  setCurrentHistory={setCurrentHistory} />}
       </View>
     </View>
   );

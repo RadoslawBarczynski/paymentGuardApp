@@ -84,13 +84,13 @@ export default function Account({ session, setCurrentScreen }: { session: Sessio
   return (
     <View style={styles.container}>
       <LogoTextComponent />
-      <View style={[styles.verticallySpaced, styles.mt20]}>
+      <View style={[styles.verticallySpaced, styles.mt20, {padding: 10}]}>
         <Input label="Email" value={session?.user?.email} disabled inputStyle={{'color':'white'}}/>
       </View>
-      <View style={styles.verticallySpaced}>
+      <View style={[styles.verticallySpaced, {padding: 10}]}>
         <Input label="Nazwa użytkownika" value={username || ''} onChangeText={(text) => setUsername(text)} inputStyle={{'color':'white'}} />
       </View>
-      <View style={styles.verticallySpaced}>
+      <View style={[styles.verticallySpaced, {padding: 10}]}>
         <Input label="Strona" value={website || ''} onChangeText={(text) => setWebsite(text)} inputStyle={{'color':'white'}} />
       </View>
 

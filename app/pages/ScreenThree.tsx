@@ -1,4 +1,4 @@
-import { View, StyleSheet, Alert, Modal, TouchableOpacity } from 'react-native'
+import { View, StyleSheet, Alert, Modal } from 'react-native'
 import React from 'react'
 import { useState, useEffect } from 'react'
 import InfoTile from '../components/InfoTile'
@@ -10,12 +10,16 @@ import BottomBar from '../components/BottomBar'
 import { Input, Button, Text} from 'react-native-elements'
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import LogoTextComponent from '../components/LogoTextComponent'
+import Selector from '../components/Selector'
+import { SelectList } from 'react-native-dropdown-select-list'
 
 const ScreenOne = ({ setCurrentScreen, username, session }) => {
   const [price, setPrice] = useState('')
   const [description, setDescription] = useState('')
   const [loading, setLoading] = useState(false)
+  const [isNonRegular, setIsNonRegular] = useState(false)
   const [isAlertVisible, setIsAlertVisible] = useState(false);
+  const [selected, setSelected] = useState(1);
 
   const showAlertCorrect = () => {
     setIsAlertVisible(true);
@@ -25,6 +29,17 @@ const ScreenOne = ({ setCurrentScreen, username, session }) => {
       setIsAlertVisible(false);
     }, 1500);
   };
+
+  const data = [
+    {key:'1', value:'Środki czystości'},
+    {key:'2', value:'Meble'},
+    {key:'3', value:'Sprzęty elektroniczne'},
+    {key:'4', value:'Sprzęty kuchenne'},
+    {key:'5', value:'Sprzęt do sprzątania'},
+    {key:'6', value:'Wyjścia'},
+]
+
+
 
   const showAlert = (name, content) => {
     Alert.alert(
@@ -45,21 +60,42 @@ const ScreenOne = ({ setCurrentScreen, username, session }) => {
     setLoading(true)
     const { user } = session
 
-    const updates = {
-      userId: user.id,
-      price: price,
-      description: description,
-      timestamp: new Date(),
-    }
 
     try {
-    let {data, error } = await supabase.from('costs').insert(updates)
+      let table
+      let updates
+
+      if(isNonRegular)
+      {
+          table = 'inregularcosts'
+          updates = {
+            userId: user.id,
+            price: price,
+            description: description,
+            timestamp: new Date(),
+            type: selected
+          }
+      }
+      else
+      {
+          table = 'costs'
+          updates = {
+            userId: user.id,
+            price: price,
+            description: description,
+            timestamp: new Date(),
+          }
+      }
+
+
+    let {data, error } = await supabase.from(table).insert(updates)
 
     if (error) {
         console.error('Błąd podczas dodawania rekordu:', error);
         showAlert('Błąd', 'Błąd podczas dodawania wydatku, sprawdź poprawność danych')
       } else {
-        console.log('Rekord został dodany:', data);
+        console.log('typ: ' + isNonRegular)
+        console.log('Rekord został dodany:', updates);
         setPrice('');
         setDescription('');
         showAlertCorrect()
@@ -78,7 +114,7 @@ const ScreenOne = ({ setCurrentScreen, username, session }) => {
       <View style={[styles.verticallySpaced, styles.mt20]}>
       <Text style={styles.title}>Dodaj wydatek!</Text>
       </View>
-      <View style={[styles.verticallySpaced, styles.mt20]}>
+      <View style={[styles.verticallySpaced, styles.mt20, {padding: 10}]}>
         <Input
           leftIcon={{ type: 'font-awesome', name: 'dollar', color: 'white' }}
           onChangeText={(text) => setPrice(text)}
@@ -89,7 +125,7 @@ const ScreenOne = ({ setCurrentScreen, username, session }) => {
           inputStyle={{'color':'white'}}
         />
       </View>
-      <View style={styles.verticallySpaced}>
+      <View style={[styles.verticallySpaced, {padding: 10}]}>
         <Input
           leftIcon={{ type: 'font-awesome', name: 'pencil', color: 'white' }}
           onChangeText={(text) => setDescription(text)}
@@ -100,7 +136,22 @@ const ScreenOne = ({ setCurrentScreen, username, session }) => {
           inputStyle={{'color':'white'}}
         />
       </View>
-      <View style={[styles.verticallySpaced, styles.mt20]}>
+      <View style={{justifyContent: 'center', alignItems: 'center'}}>
+      <Selector setIsNonRegular={setIsNonRegular}/>
+      </View>
+      {isNonRegular && (
+      <View style={styles.mt20}>
+      <SelectList 
+        setSelected={(val) => setSelected(val)} 
+        data={data} 
+        dropdownTextStyles={{color:'#fff', fontWeight: 'bold', fontSize: 15}}
+        inputStyles={{color:'#fff', fontWeight: 'bold', fontSize: 15}}
+        search={false}
+        save="key"
+    />
+    </View>
+    )}
+      <View style={[styles.verticallySpaced, styles.mt40]}>
         <Button
               title="DODAJ"
               buttonStyle={{
@@ -145,6 +196,9 @@ const styles = StyleSheet.create({
     },
     mt20: {
       marginTop: 20,
+    },
+    mt40:{
+      marginTop: 40,
     },
     mt80: {
       marginTop: 80,
